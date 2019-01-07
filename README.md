@@ -1,5 +1,5 @@
 # Learning Data Science
-My personal collection of resources and information to learn the ways of the Data Science.
+My personal collection of resources and information to learn the ways of the Data Scientist.
 
 ## Online courses
 ### Machine and Deep Learning
@@ -12,7 +12,8 @@ This course covers a wide variety of topics in machine learning and statistical 
 ### Data Science
 * [Intro to Data Science](https://github.com/briandalessandro/DataScienceCourse)  
 Intro to Data Science (DS-GA-1001) for the NYU Center for Data Science
-*
+* [Data Science](https://sites.google.com/site/datascienceolin17/)  
+**Instructor**: Allen Downey and Manish Datt (Olin College)
 
 ### Statistics and Probability
 * [Statistical and Mathematical Methods](https://cims.nyu.edu/~cfgranda/pages/DSGA1002_fall15/index.html)  
@@ -26,15 +27,18 @@ This course introduces statistical and mathematical methods needed in the practi
 * [Introduction to Machine Learning with Python](http://shop.oreilly.com/product/0636920030515.do)
 * [Hands-On Machine Learning with Scikit-Learn and TensorFlow](http://shop.oreilly.com/product/0636920052289.do)
 
+
+## Projects
+### Kaggle
+* [https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python](https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python)
+
 ## Software Development
 ### Unit Testing
 *
 ### Code review
 *
 ### Version Control
-
-## Projects
-* 
+*
 
 ## Contributors
 * Filippo Broggini (ETH Zurich)
