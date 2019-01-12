@@ -25,8 +25,8 @@ This course introduces statistical and mathematical methods needed in the practi
 * [Data Science from Scratch](http://shop.oreilly.com/product/0636920033400.do)
 * [Data Science for Business](http://data-science-for-biz.com)
 * [Introduction to Machine Learning with Python](http://shop.oreilly.com/product/0636920030515.do)
-* [Hands-On Machine Learning with Scikit-Learn and TensorFlow](http://shop.oreilly.com/product/0636920052289.do)
-
+* [Hands-On Machine Learning with Scikit-Learn and TensorFlow](http://shop.oreilly.com/product/0636920052289.do)  
+[My notes](books/hands_on_ml.md)
 
 ## Projects
 ### Kaggle
