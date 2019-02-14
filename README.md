@@ -1,6 +1,9 @@
 # Learning Data Science
 My personal collection of resources and information to learn the ways of the Data Scientist.
 
+## Articles
+* [berkeleysciencereview](http://berkeleysciencereview.com/how-to-become-a-data-scientist-before-you-graduate/)
+
 ## Online courses
 ### Machine and Deep Learning
 * [fast.ai](https://www.fast.ai)
