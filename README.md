@@ -31,6 +31,12 @@ This course introduces statistical and mathematical methods needed in the practi
 * [Hands-On Machine Learning with Scikit-Learn and TensorFlow](http://shop.oreilly.com/product/0636920052289.do)  
 [My notes](books/hands_on_ml.md)
 
+### Deep Learning
+* [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com) by Michael Nielsen
+
+## Websites
+* [EliteDataScience](https://elitedatascience.com)
+
 ## Projects
 ### Kaggle
 * [https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python](https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python)
