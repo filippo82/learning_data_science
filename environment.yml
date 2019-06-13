@@ -1,0 +1,11 @@
+name: learning
+dependencies:
+  - python=3.6
+  - pip
+  - pylint
+  - numpy
+  - scipy
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - jupyter
