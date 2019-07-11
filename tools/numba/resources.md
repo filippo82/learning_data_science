@@ -5,7 +5,7 @@ Numbda
 Repositories
 ============
 
-* [Numba tutorial for GTC2019](https://github.com/ContinuumIO/gtc2019-numba)
+* [Numba tutorial for PyData Amsterdam 2019](https://github.com/ContinuumIO/pydata-amsterdam2019-numba)
 
 
 Small online courses
