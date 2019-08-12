@@ -1,6 +1,12 @@
 fast.ai
 =======
 
+This is required for the `doc` function to work:
+
+```
+conda install nbformat nbconvert
+```
+
 Articles
 ========
 
