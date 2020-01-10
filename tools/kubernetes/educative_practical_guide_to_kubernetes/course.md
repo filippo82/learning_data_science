@@ -16,10 +16,40 @@ kubectl version --output=yaml
 curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 ```
 
-# Create a Cluster with Minikube
+# Create a cluster with Minikube
 
 ```shell
 minikube start --vm-driver=virtualbox
 minikube status
 ```
 
+## Check environment variables
+
+```shell
+minikube docker-env
+eval $(minikube docker-env)
+```
+
+## Inspect the cluster
+
+### List the containers
+```shell
+docker container ls
+```
+## 
+```shell
+kubectl config current-context
+```
+## List cluster nodes
+```shell
+kubectl get nodes
+```
+##
+```shell
+```
+##
+```shell
+```
+##
+```shell
+```
