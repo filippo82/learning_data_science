@@ -1,0 +1,6 @@
+
+# Jupyter Book
+**/_build
+
+# Jupyter Notebooks
+**/.ipynb_checkpoints
