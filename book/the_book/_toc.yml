@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+- file: intro
+  numbered: true
+
+- part: Get started
+  chapters:
+  - file: start/overview
+  - file: start/installation
+
+- part: Applications
+  chapters:
+  - file: apps/overview
+    sections:
+      - file: apps/installation_common
+  - file: apps/simple
+  - file: apps/jitsi
