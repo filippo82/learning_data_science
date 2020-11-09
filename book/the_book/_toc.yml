@@ -15,3 +15,8 @@
       - file: apps/installation_common
   - file: apps/simple
   - file: apps/jitsi
+
+- part: Library
+  chapters:
+  - file: readings/overview
+  - file: readings/opensource
