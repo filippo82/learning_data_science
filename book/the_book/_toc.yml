@@ -8,6 +8,12 @@
   - file: start/overview
   - file: start/installation
 
+- part: DevOps
+  chapters:
+  - file: devops/overview
+  - file: devops/devops
+  - file: devops/gitops
+
 - part: Applications
   chapters:
   - file: apps/overview
