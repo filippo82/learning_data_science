@@ -9,3 +9,10 @@ title                       : The Book  # The title of the book. Will be placed 
 author                      : Filippo Broggini  # The author of the book
 copyright                   : "2020"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
+
+repository:
+  url: https://github.com/filippo82/learning_data_science
+  path_to_book: book/the_book
+html:
+  use_repository_button: true
+
