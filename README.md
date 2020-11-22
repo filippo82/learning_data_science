@@ -22,7 +22,10 @@ Intro to Data Science (DS-GA-1001) for the NYU Center for Data Science
 * [Statistical and Mathematical Methods](https://cims.nyu.edu/~cfgranda/pages/DSGA1002_fall15/index.html)  
 **Instructor**: Carlos Fernandez-Granda (NYU)  
 This course introduces statistical and mathematical methods needed in the practice of data science. It covers basic principles in probability, statistics, linear algebra, and optimization.
-* 
+*
+
+### Various
+* [Pablo Caceres](https://pabloinsente.github.io/about) online courses.
 
 ## Books
 * [Data Science from Scratch](http://shop.oreilly.com/product/0636920033400.do)
