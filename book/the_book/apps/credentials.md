@@ -12,8 +12,9 @@ Default output format [None]: json
 
 ```bash
 export AWS_DEFAULT_REGION=eu-central-1
-export AWS_ACCOUNT_ID=533283293550
 export AWS_PROFILE=thebook
+export AWS_ACCOUNT_ID=$(aws --profile ${AWS_PROFILE} sts get-caller-identity | python -c 'import json,sys;obj=json.load(sys.stdin);print(obj["Account"])')
+# export AWS_ACCOUNT_ID=533283293550
 ```
 
 [Here](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-methods)
