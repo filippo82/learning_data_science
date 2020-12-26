@@ -5,14 +5,35 @@
 
 #######################################################################################
 # Book settings
-title                       : The Book  # The title of the book. Will be placed in the left navbar.
+title                       : Learning Data Science  # The title of the book. Will be placed in the left navbar.
 author                      : Filippo Broggini  # The author of the book
-copyright                   : "2020"  # Copyright year to be placed in the footer
-logo                        : logo.png  # A path to the book logo
+copyright                   : "2020-2021"  # Copyright year to be placed in the footer
+logo                        : assets/images/logo_v1.jpg  # A path to the book logo
 
+# Information about where the book exists on the web
 repository:
   url: https://github.com/filippo82/learning_data_science
+  branch: master
   path_to_book: book/the_book
 html:
-  use_repository_button: true
+  home_page_in_navbar: false
+  use_repository_button: true  # Add a link to your repository
+  use_issues_button: true  # Add a button to open issues
 
+# Disable building files that aren't specified in the TOC
+only_build_toc_files: true
+
+# parse:
+#   myst_extended_syntax: true
+
+# execute:
+#   timeout: -1
+
+#######################################################################################
+# Jupyter book settings you probably don't need to change
+
+# content_folder_name: content           # The folder where your raw content (notebooks/markdown files) are located
+# images_url: /assets/images                   # Path to static image files
+# css_url: /assets/css                      # Path to static CSS files
+# js_url: /assets/js                       # Path to JS files
+# custom_static_url: /assets/custom            # Path to user's custom CSS/JS files

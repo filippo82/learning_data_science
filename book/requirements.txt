@@ -1,4 +1,18 @@
+# Development
+wheel
+ipython
+jupyter
+pylint
+black
+isort
+
+# DS/ML/DL
+
+# Jupyter Book
 jupyter-book
-matplotlib
-numpy
-ghp-import
+cookiecutter
+
+# Other
+# matplotlib
+# numpy
+# ghp-import

@@ -6,3 +6,9 @@
 
 # Private keys
 *.pem
+
+# macOS
+.DS_Store
+
+# Jekyll
+.jekyll-cache

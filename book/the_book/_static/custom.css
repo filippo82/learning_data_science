@@ -1,0 +1,10 @@
+/* p {
+    text-align: justify;
+    background: pink;
+    color: red;
+} */
+
+/* Round border of code blocks */
+div.highlight pre {
+    border-radius: 8px;
+}

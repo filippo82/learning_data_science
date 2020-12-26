@@ -1,7 +1,13 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 - file: intro
-  numbered: true
+  numbered: false
+
+- part: About this Book
+  chapters:
+  - file: front_matter/about
+  - file: front_matter/acknowledgements
+  - file: front_matter/toc
 
 - part: Get started
   chapters:
@@ -11,7 +17,6 @@
 - part: DevOps
   chapters:
   - file: devops/overview
-  - file: devops/devops
   - file: devops/gitops
 
 - part: Applications
@@ -22,7 +27,8 @@
   - file: apps/simple
   - file: apps/jitsi
 
-- part: Library
+- part: Resources
   chapters:
-  - file: readings/overview
-  - file: readings/opensource
+  - file: resources/overview
+  - file: resources/courses
+  - file: resources/books
