@@ -127,6 +127,10 @@ sudo apt purge jigasi jitsi-meet jitsi-meet-web-config jitsi-meet-prosody jitsi-
 
 * [Video](https://www.youtube.com/watch?v=S43-A1N_COE)
 * [Code](https://nerdonthestreet.com/wiki?find=Set+Up+Jibri+for+Jitsi+Recording%3Aslash%3AStreaming)
+* See also the [official GitHub repo](https://github.com/jitsi/jibri)
+* See also this [forum thread](https://community.jitsi.org/t/tutorial-how-to-install-the-new-jibri/88861) for installing Jibri
+* See also this [forum thread](https://community.jitsi.org/t/tutorial-jibri-overview-troubleshooting-tips-tricks-solve-your-jibri-problems-quickly/86054) for troubleshooting Jibri
+
 
 sudo -i
 
@@ -161,6 +165,9 @@ vim /etc/prosody/prosody.cfg.lua
 
 Make sure to replace the domains with jitsi.softwareunderground.org
 
+**NOTE**
+`storage = "memory"`
+`storage = "internal"`
 
 prosodyctl register jibri auth.jitsi.softwareunderground.org Jibr1P@ssw0rd
 prosodyctl register recorder recorder.jitsi.softwareunderground.org Rec0rderP@ssw0rd
@@ -174,13 +181,14 @@ org.jitsi.jicofo.jibri.PENDING_TIMEOUT=90
 
 vim /etc/jitsi/meet/jitsi.softwareunderground.org-config.js
 
-
 fileRecordingsEnabled: true,
 liveStreamingEnabled: true,
 hiddenDomain: 'recorder.jitsi.softwareunderground.org',
 
 mkdir /recordings
 chown jibri:jibri /recordings
+
+vim /etc/jitsi/jibri/jibri.conf
 
 jibri {
   // A unique identifier for this Jibri
@@ -303,3 +311,6 @@ apt install adoptopenjdk-8-hotspot
 vim /opt/jitsi/jibri/launch.sh
 
 Replace `java` with `/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/bin/java`
+
+systemctl restart jitsi-videobridge2 prosody jicofo
+systemctl enable --now jibri
