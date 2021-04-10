@@ -1,8 +1,9 @@
 # Jitsi
 
-# Resources
+## Resources
 
 ## AWS
+
 * [Self-Hosting Guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-start)
 * [Getting started with Jitsi, an open source web conferencing solution](https://aws.amazon.com/blogs/opensource/getting-started-with-jitsi-an-open-source-web-conferencing-solution/#deploying-jitsi-on-aws-ecs)
 * [How to Setup Jitsi Meet on Azure/AWS/GCP](https://cloudinfrastructureservices.co.uk/how-to-setup-jitsi-meet-on-azure-aws-gcp/)
@@ -16,20 +17,21 @@
 * [Set up a Video Conferencing server for free with Jitsi-meet](https://medium.com/@jerome.dechauveron/how-to-set-up-video-conferencing-with-jitsi-meet-9fa704e4f66f)
 * [hpi-schul-cloud/jitsi-deployment](https://github.com/hpi-schul-cloud/jitsi-deployment)
 
-## Terraform
+### Terraform
+
 * [mavenik/jitsi-terraform](https://github.com/mavenik/jitsi-terraform/tree/master/aws)
 * [Infrastructure as Code: Deploy Jitsi Meet to AWS](https://avasdream.engineer/terraform-jitsi)
 * [Code for ^^^](https://github.com/AvasDream/terraform_aws_jitsi_meet)
 * [Jitsi on AWS (with Terraform)](https://napo.io/posts/jitsi-on-aws-with-terraform/)
-* 
 
-## GCP
+### GCP
+
 * [Install Jitsi Meet on Compute Engine (GCP)](https://jochen.kirstaetter.name/install-jitsi-meet-on-gcp/)
 
-## Azure
+### Azure
 * [Host Private Video Meetings in Azure with Jitsi](https://build5nines.com/host-private-video-meetings-in-azure-with-jitsi/)
 
-## Various
+### Various
 * [](https://github.com/spantaleev/matrix-docker-ansible-deploy)
 * [Getting started with Jitsi, an open source web conferencing solution](https://aws.amazon.com/blogs/opensource/getting-started-with-jitsi-an-open-source-web-conferencing-solution/)
 * [https://jphblog.com/2020/04/jitsi-on-aws/](https://jphblog.com/2020/04/jitsi-on-aws/)
@@ -37,13 +39,13 @@
 * [A Jitsi Meet Chart for Kubernetes](https://github.com/taktakpeops/jitsi-meet-helm)
 * [Host a Jitsi Meet Server](https://nerdonthestreet.com/wiki?find=Host+a+Jitsi+Meet+Server)
 
-# Install on AWS
+## Install on AWS
 
-## Create a DNS record in Route53
+### Create a DNS record in Route53
 
 Create an `A` DNS record.
 
-## Create Security Group
+### Create Security Group
 
 Inbound:
 *
@@ -51,22 +53,22 @@ Inbound:
 Outbound:
 * All traffic
 
-## Create Launch Template
+### Create Launch Template
 
 
-## Launch instance from template
+### Launch instance from template
 
 
-## Associate Elastic IP to instance
+### Associate Elastic IP to instance
 
 
-## Connect to instance
+### Connect to instance
 
 ```bash
 $ ssh -i "KeyPair_ec2_swung.pem" ubuntu@jitsi.amstelhack2020.site
 ```
 
-## Set up instance and install Jitsi
+### Set up instance and install Jitsi
 
 ```bash
 $ sudo apt update
@@ -103,23 +105,24 @@ $ sudo ufw status verbose
 ```
 
 ```bash
-$ sudo apt install jitsi-meet
+sudo apt install jitsi-meet
 ```
+
 When the `jitsi-videobridge2` windows appears,
 insert the hostname of the current installation: `jitsi.softwareunderground.org`
 
 ```bash
-$ sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
+sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
 ```
 
-## Reconfigure
+### Reconfigure
 
 ```bash
 sudo dpkg-reconfigure jitsi-videobridge2
 ```
 
-## Uninstall
+### Uninstall
+
 ```bash
 sudo apt purge jigasi jitsi-meet jitsi-meet-web-config jitsi-meet-prosody jitsi-meet-turnserver jitsi-meet-web jicofo jitsi-videobridge2
 ```
-

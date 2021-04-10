@@ -69,3 +69,9 @@ TBD
 ```{code-block} shell
 jb build new_book
 ```
+
+## Publish the book on GitHub pages
+
+```{code-block} shell
+ghp-import -n -p -f new_book/_build/html
+```

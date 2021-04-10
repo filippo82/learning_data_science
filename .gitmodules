@@ -1,0 +1,3 @@
+[submodule "academy/books/js4ds/js4ds"]
+	path = academy/books/js4ds/js4ds
+	url = https://github.com/software-tools-in-javascript/js4ds.git

@@ -30,5 +30,8 @@
 - part: Resources
   chapters:
   - file: resources/overview
+  - file: resources/readings
   - file: resources/courses
+  - file: resources/inspiration
   - file: resources/books
+  - file: resources/tools

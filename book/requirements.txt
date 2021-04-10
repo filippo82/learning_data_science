@@ -11,8 +11,8 @@ isort
 # Jupyter Book
 jupyter-book
 cookiecutter
+ghp-import
 
 # Other
 # matplotlib
 # numpy
-# ghp-import
