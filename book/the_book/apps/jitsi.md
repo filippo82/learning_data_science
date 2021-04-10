@@ -65,7 +65,7 @@ Outbound:
 ### Connect to instance
 
 ```bash
-$ ssh -i "KeyPair_ec2_swung.pem" ubuntu@jitsi.amstelhack2020.site
+$ ssh -i "KeyPair_ec2_jitsi.pem" ubuntu@jitsi.softwareunderground.org
 ```
 
 ### Set up instance and install Jitsi
@@ -75,13 +75,13 @@ $ sudo apt update
 $ sudo apt install apt-transport-https
 $ sudo apt-add-repository universe
 $ sudo apt update
-$ sudo hostnamectl set-hostname jitsi
+$ sudo hostnamectl set-hostname meet
 ```
 
 Modify `/etc/hosts` to add this line after `127.0.0.1 localhost`:
 ```bash
 # 18.158.83.156 jitsi.amstelhack2020.site meet
-127.0.1.1 jitsi.softwareunderground.site jitsi
+18.158.83.156 jitsi.softwareunderground.org jitsi
 ```
 
 ```bash
@@ -126,3 +126,195 @@ sudo dpkg-reconfigure jitsi-videobridge2
 ```bash
 sudo apt purge jigasi jitsi-meet jitsi-meet-web-config jitsi-meet-prosody jitsi-meet-turnserver jitsi-meet-web jicofo jitsi-videobridge2
 ```
+
+##
+
+* [Video](https://www.youtube.com/watch?v=S43-A1N_COE)
+* [Code](https://nerdonthestreet.com/wiki?find=Set+Up+Jibri+for+Jitsi+Recording%3Aslash%3AStreaming)
+* See also the [official GitHub repo](https://github.com/jitsi/jibri)
+* See also this [forum thread](https://community.jitsi.org/t/tutorial-how-to-install-the-new-jibri/88861) for installing Jibri
+* See also this [forum thread](https://community.jitsi.org/t/tutorial-jibri-overview-troubleshooting-tips-tricks-solve-your-jibri-problems-quickly/86054) for troubleshooting Jibri
+
+
+sudo -i
+
+apt install linux-image-generic ffmpeg curl unzip software-properties-common
+
+sudo apt remove linux-image-aws
+sudo apt remove linux-image-*-aws
+systemctl reboot
+
+echo "snd_aloop" >> /etc/modules
+
+curl -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
+apt update
+apt install google-chrome-stable
+
+CHROME_DRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE`
+wget -N http://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip -P ~/
+unzip ~/chromedriver_linux64.zip -d ~/
+rm ~/chromedriver_linux64.zip
+sudo mv -f ~/chromedriver /usr/local/bin/chromedriver
+sudo chmod 0755 /usr/local/bin/chromedriver
+
+mkdir -p /etc/opt/chrome/policies/managed
+echo '{ "CommandLineFlagSecurityWarningsEnabled": false }' >>/etc/opt/chrome/policies/managed/managed_policies.json
+
+apt install jibri
+
+usermod -aG adm,audio,video,plugdev jibri
+
+vim /etc/prosody/prosody.cfg.lua
+
+Make sure to replace the domains with jitsi.softwareunderground.org
+
+**NOTE**
+`storage = "memory"`
+`storage = "internal"`
+
+prosodyctl register jibri auth.jitsi.softwareunderground.org Jibr1P@ssw0rd
+prosodyctl register recorder recorder.jitsi.softwareunderground.org Rec0rderP@ssw0rd
+
+Passwords are in 1Password
+
+vim /etc/jitsi/jicofo/sip-communicator.properties
+
+org.jitsi.jicofo.jibri.BREWERY=JibriBrewery@internal.auth.jitsi.softwareunderground.org
+org.jitsi.jicofo.jibri.PENDING_TIMEOUT=90
+
+vim /etc/jitsi/meet/jitsi.softwareunderground.org-config.js
+
+fileRecordingsEnabled: true,
+liveStreamingEnabled: true,
+hiddenDomain: 'recorder.jitsi.softwareunderground.org',
+
+mkdir /recordings
+chown jibri:jibri /recordings
+
+vim /etc/jitsi/jibri/jibri.conf
+
+jibri {
+  // A unique identifier for this Jibri
+  // TODO: eventually this will be required with no default
+  id = ""
+  // Whether or not Jibri should return to idle state after handling
+  // (successfully or unsuccessfully) a request.  A value of 'true'
+  // here means that a Jibri will NOT return back to the IDLE state
+  // and will need to be restarted in order to be used again.
+  single-use-mode = false
+  api {
+    http {
+      external-api-port = 2222
+      internal-api-port = 3333
+    }
+    xmpp {
+      // See example_xmpp_envs.conf for an example of what is expected here
+      environments = [
+	      {
+                name = "prod environment"
+                xmpp-server-hosts = ["jitsi.softwareunderground.org"]
+                xmpp-domain = "jitsi.softwareunderground.org"
+
+                control-muc {
+                    domain = "internal.auth.jitsi.softwareunderground.org"
+                    room-name = "JibriBrewery"
+                    nickname = "jibri-nickname"
+                }
+
+                control-login {
+                    domain = "auth.jitsi.softwareunderground.org"
+                    username = "jibri"
+                    password = "fbYZgHijoxRrBReNFWjRW4kv"
+                }
+
+                call-login {
+                    domain = "recorder.jitsi.softwareunderground.org"
+                    username = "recorder"
+                    password = "rEjBiyRWzcpFsZCrYD6Wsauz"
+                }
+
+                strip-from-room-domain = "conference."
+                usage-timeout = 0
+                trust-all-xmpp-certs = true
+            }]
+    }
+  }
+  recording {
+    recordings-directory = "/recordings"
+    # TODO: make this an optional param and remove the default
+    finalize-script = ""
+  }
+  streaming {
+    // A list of regex patterns for allowed RTMP URLs.  The RTMP URL used
+    // when starting a stream must match at least one of the patterns in
+    // this list.
+    rtmp-allow-list = [
+      // By default, all services are allowed
+      ".*"
+    ]
+  }
+  chrome {
+    // The flags which will be passed to chromium when launching
+    flags = [
+      "--use-fake-ui-for-media-stream",
+      "--start-maximized",
+      "--kiosk",
+      "--enabled",
+      "--disable-infobars",
+      "--autoplay-policy=no-user-gesture-required"
+    ]
+  }
+  stats {
+    enable-stats-d = true
+  }
+  webhook {
+    // A list of subscribers interested in receiving webhook events
+    subscribers = []
+  }
+  jwt-info {
+    // The path to a .pem file which will be used to sign JWT tokens used in webhook
+    // requests.  If not set, no JWT will be added to webhook requests.
+    # signing-key-path = "/path/to/key.pem"
+
+    // The kid to use as part of the JWT
+    # kid = "key-id"
+
+    // The issuer of the JWT
+    # issuer = "issuer"
+
+    // The audience of the JWT
+    # audience = "audience"
+
+    // The TTL of each generated JWT.  Can't be less than 10 minutes.
+    # ttl = 1 hour
+  }
+  call-status-checks {
+    // If all clients have their audio and video muted and if Jibri does not
+    // detect any data stream (audio or video) coming in, it will stop
+    // recording after NO_MEDIA_TIMEOUT expires.
+    no-media-timeout = 30 seconds
+
+    // If all clients have their audio and video muted, Jibri consideres this
+    // as an empty call and stops the recording after ALL_MUTED_TIMEOUT expires.
+    all-muted-timeout = 10 minutes
+
+    // When detecting if a call is empty, Jibri takes into consideration for how
+    // long the call has been empty already. If it has been empty for more than
+    // DEFAULT_CALL_EMPTY_TIMEOUT, it will consider it empty and stop the recording.
+    default-call-empty-timeout = 30 seconds
+  }
+}
+
+
+wget -O - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+add-apt-repository https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+apt update
+apt install adoptopenjdk-8-hotspot
+
+vim /opt/jitsi/jibri/launch.sh
+
+Replace `java` with `/usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/bin/java`
+
+systemctl restart jitsi-videobridge2 prosody jicofo
+systemctl enable --now jibri
