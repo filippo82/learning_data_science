@@ -2,7 +2,33 @@
 
 ## Python
 
-[The right and wrong way to set Python 3 as default on a Mac](https://opensource.com/article/19/5/python-3-default-mac)
+* [The right and wrong way to set Python 3 as default on a Mac](https://opensource.com/article/19/5/python-3-default-mac) from opensource.com
+* [Managing Multiple Python Versions With pyenv](https://realpython.com/intro-to-pyenv/) from Real Python
+
+List the available Python versions:
+
+```{code-block} shell
+pyenv install --list | grep " 3\.[678]"
+```
+
+Install a specific version:
+
+```{code-block} shell
+pyenv install -v 3.7.10"
+```
+
+Set the newly installed Python version as your global default:
+
+```{code-block} shell
+pyenv global 3.7.10"
+pyenv versions
+```
+
+Add an additional configuration to your `.zshrc` file:
+
+```{code-block} shell
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
+```
 
 ## Poetry
 
@@ -33,4 +59,3 @@ go to “Settings” > “Advanced Settings Editor” > “Jupyterlab Code Forma
     }
 }
 ```
-
