@@ -30,6 +30,11 @@ Add an additional configuration to your `.zshrc` file:
 echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshrc
 ```
 
+Finally, add this line at the end of your `.zshrc`:
+```{code-block} shell
+export PATH="$(pyenv root)/shims:$PATH"
+```
+
 ## Poetry
 
 [Poetry](https://python-poetry.org/)
